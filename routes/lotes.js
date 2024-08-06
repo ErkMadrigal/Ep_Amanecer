@@ -75,6 +75,5 @@ router.put('/actualizar-lote/:num_lote', async (req, res) => {
     }
   });
 
-//   curl -X PUT http://localhost:3000/lotes/actualizar-lote/106  -H "Content-Type: application/json"  -d '{"id_estatus": "nuevo_estatus", "fecha_contrato": "2024-08-05", "id_usuario": "nuevo_id_usuario"}'
 
 module.exports = router;

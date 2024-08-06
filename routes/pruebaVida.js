@@ -1,4 +1,4 @@
-// routes/usuarios.js
+
 const express = require('express');
 const router = express.Router();
 const db = require('../db'); 
@@ -6,14 +6,13 @@ const db = require('../db');
 
 
 router.get('/', (req, res) => {
-    const startTime = Date.now(); // Captura el tiempo de inicio
+    const startTime = Date.now(); 
 
-    // Consulta a la base de datos
     const query = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'amanecer'";
 
     db.query(query, (err, results) => {
-        const endTime = Date.now(); // Captura el tiempo al finalizar la consulta
-        const executionTime = endTime - startTime; // Calcula el tiempo de ejecución
+        const endTime = Date.now();
+        const executionTime = endTime - startTime;
 
         if (err) {
             console.error('Error consultando la base de datos:', err.stack);

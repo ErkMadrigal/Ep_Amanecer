@@ -36,7 +36,6 @@ router.get('/rango/:startId/:endId', (req, res) => {
 
 // Endpoint para obtener un lotes por ID
 router.get('/:id', (req, res) => {
-    // const query = 'SELECT l.id_lote, l.num_lote, l.ancho, l.largo, l.excedente, mce.valor_text estatus, mcp.valor_numero precio, mcd.valor_numero descuento FROM lotes l LEFT JOIN multicatalogo mce on mce.id = l.id_estatus LEFT JOIN multicatalogo mcp on mcp.id = l.id_precio LEFT JOIN multicatalogo mcd on mcd.id = l.id_descuento WHERE num_lote = ?';
     const query = 'SELECT l.id_lote, l.num_lote, l.ancho, l.largo, l.excedente, mce.valor_text estatus, mcp.valor_numero precio, mcd.valor_numero descuento, l.id_estatus, (l.ancho * l.largo) AS area, ((l.ancho * l.largo) + l.excedente) AS areaTotal, (((l.ancho * l.largo )+ l.excedente) * mcp.valor_numero) AS precioTotal FROM lotes l LEFT JOIN multicatalogo mce on mce.id = l.id_estatus LEFT JOIN multicatalogo mcp on mcp.id = l.id_precio LEFT JOIN multicatalogo mcd on mcd.id = l.id_descuento WHERE num_lote = ?';
     const values = [req.params.id];
     db.query(query, values, (err, results) => {

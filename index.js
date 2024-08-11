@@ -6,6 +6,7 @@ const dataRouter = require('./routes/lotes');
 const usuariosRouter = require('./routes/usuarios');
 const catalogosRouter = require('./routes/catalogos');
 const pruebaVidaRouter = require('./routes/pruebaVida');
+const emailRouter = require('./routes/email');
 const cors = require('cors');
 
 
@@ -16,6 +17,7 @@ app.use(express.json());
 
 // Usar el enrutador para todas las rutas
 app.use('/pruebaVida', pruebaVidaRouter);
+app.use('/email', emailRouter);
 app.use('/lotes', dataRouter);
 app.use('/usuarios', usuariosRouter);
 app.use('/catalogos', catalogosRouter);

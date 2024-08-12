@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotización</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #214e47;
+        }
+        .header p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+        .content h2 {
+            font-size: 18px;
+            color: #214e47;
+            margin-top: 0;
+        }
+        .content p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        .table th, .table td {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .table th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        .total {
+            text-align: right;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header" style="background-color: #214e47;">
+            <center>
+                <img src="https://static.wixstatic.com/media/a8d396_443f122cbd7746f9ab513201b4235947~mv2.png/v1/crop/x_0,y_217,w_1920,h_646/fill/w_781,h_263,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Manual_logo_almanta.png" style="max-width: 400px; padding: 1rem;  display: block; width: 260px;" alt="" width="260" border="0">
+            </center>
+        </div>
+        <div class="content">
+            <p>Fecha: <%= fecha %></p>
+            <p>Estimado/a <%= nombreCliente %>,</p>
+            <p>Gracias por contactarnos con respecto al Precio del lote <%= numeroLote %>. Nos complace presentarle la siguiente cotización:</p>
+            <h2>Detalles de la Cotización</h2>
+            <table class="table">
+                <tr>
+                    <th>Producto/Servicio</th>
+                    <th>Precio</th>
+                </tr>
+                <% productos.forEach(producto => { %>
+                <tr>
+                    <td><%= producto.nombre %></td>
+                    <td>$<%= producto.precio %></td>
+                </tr>
+                <% }); %>
+            </table>
+            <p class="total">Subtotal: $<%= subtotal %></p>
+            <p class="total">Descuento: $<%= descuento %></p>
+            <h2>Total: $<%= total %></h2>
+            <h2>Plazo de Entrega</h2>
+            <p><%= tiempoEntrega %></p>
+            <h2>Condiciones de Pago</h2>
+            <p><%= condicionesPago %></p>
+            <p>Si tiene alguna pregunta o necesita más información, no dude en ponerse en contacto con nosotros. Agradecemos su preferencia y estamos a su disposición para cualquier consulta.</p>
+        </div>
+        <br>
+        <div class="footer">
+            <p>&copy; 2024 Almanta. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</body>
+</html>

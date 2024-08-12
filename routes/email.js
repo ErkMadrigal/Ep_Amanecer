@@ -4,22 +4,34 @@ const { Resend } = require('resend');
 const resend = new Resend('re_TaAU68d5_N2n4iZYxY8Yv4ZA81iJtsF6E');
 
 router.post('/send-email', async (req, res) => {
-    const { email, nombreCliente, fecha, numeroLote, productos, subtotal, descuento, total, tiempoEntrega, condicionesPago } = req.body;
+    const { lote, nombreCliente, lxa, mLote, exedente, areaTotal, apartado, precioM, planCompra, mesualidades, totalMensualidades, Enganche, totalPagos, planPagos, PrecioLista, descuento, PrecioTotal, escritura, correo } = req.body;
 
     try {
         const datosCotizacion = {
-            fecha: '11 de Agosto, 2024',
-            nombreCliente: 'Juan Pérez',
-            numeroLote: 'A123',
-            productos: [
-                { nombre: 'Servicio de Construcción', precio: 5000 },
-                { nombre: 'Materiales de Construcción', precio: 3000 }
-            ],
-            subtotal: 8000,
-            descuento: 500,
-            total: 7500,
-            tiempoEntrega: '3 semanas',
-            condicionesPago: '50% al inicio, 50% al finalizar'
+            lote: lote,
+            nombreCliente: nombreCliente,
+            
+            lxa: lxa,
+            mLote: mLote,
+            exedente: exedente,
+            areaTotal: areaTotal,
+
+            apartado: apartado,
+            precioM: precioM,
+
+            planCompra: planCompra,
+            mesualidades: mesualidades,
+            totalMensualidades: totalMensualidades,
+
+            Enganche: Enganche,
+            totalPagos: totalPagos,
+
+            planPagos: planPagos,
+
+            PrecioLista: PrecioLista,
+            descuento: descuento,
+            PrecioTotal: PrecioTotal,
+            escritura: escritura,
         };
 
         // Renderiza la plantilla EJS a HTML
@@ -33,7 +45,7 @@ router.post('/send-email', async (req, res) => {
         // Envía el correo utilizando Resend
         const { data, error } = await resend.emails.send({
             from: 'Acme <onboarding@resend.dev>',
-            to: ['erick.madfl@gmail.com'],
+            to: [correo],
             subject: 'Cotización para ' + datosCotizacion.nombreCliente,
             html: htmlContent,
         });

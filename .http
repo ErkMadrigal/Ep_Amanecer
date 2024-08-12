@@ -5,3 +5,7 @@ GET http://localhost:3000/pruebaVida
 
 ###
 PUT http://localhost:3000/lotes/actualizar-lote/106  -H "Content-Type: application/json"  -d '{"id_estatus": "nuevo_estatus", "fecha_contrato": "2024-08-05", "id_usuario": "nuevo_id_usuario"}'
+
+
+###
+GET curl http://localhost:3000/email/send-email

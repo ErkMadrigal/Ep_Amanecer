@@ -77,29 +77,74 @@
             </center>
         </div>
         <div class="content">
-            <p>Fecha: <%= fecha %></p>
+            <p>Plan de Compra: <%= lote %></p>
             <p>Estimado/a <%= nombreCliente %>,</p>
-            <p>Gracias por contactarnos con respecto al Precio del lote <%= numeroLote %>. Nos complace presentarle la siguiente cotización:</p>
+            <p>Gracias por contactarnos con respecto al Precio del lote <%= lote %>. Nos complace presentarle la siguiente cotización:</p>
             <h2>Detalles de la Cotización</h2>
             <table class="table">
                 <tr>
-                    <th>Producto/Servicio</th>
-                    <th>Precio</th>
+                    <th>L x A</th>
+                    <th>M<sub>2</sub> lote</th>
+                    <th>Exedente</th>
                 </tr>
-                <% productos.forEach(producto => { %>
                 <tr>
-                    <td><%= producto.nombre %></td>
-                    <td>$<%= producto.precio %></td>
+                    <td><%= lxa %></td>
+                    <td>$<%= mLote %></td>
+                    <td>$<%= exedente %></td>
                 </tr>
-                <% }); %>
             </table>
-            <p class="total">Subtotal: $<%= subtotal %></p>
+            <br>
+            <h2>Area total: <%= areaTotal %></h2>
+
+            <table class="table">
+                <tr>
+                    <th>Apartado</th>
+                    <th>Precio por m<sub>2</sub></th>
+                </tr>
+                <tr>
+                    <td><%= apartado %></td>
+                    <td><%= precioM %></td>
+                </tr>
+            </table>
+            <br>
+                <h1>Plan de compra</h1>
+                <h3><%=planCompra%></h3>
+            <br>
+
+            
+            <% if(planCompra == "credito"){ %>
+                <table class="table">
+                    <tr>
+                        <th>Pago</th>
+                        <th>Fecha</th>
+                        <th>Importe</th>
+                    </tr>
+                    <% planPagos.forEach(pago => { %>
+                    <tr>
+                        <td><%= pago.pago %></td>
+                        <td><%= pago.fecha %></td>
+                        <td>$<%= pago.importe %></td>
+                    </tr>
+                    <% }); %>
+                </table>
+                <p class="total">Mensualidades: $<%= mesualidades %></p>
+                <p class="total">Total Mensualidades: <b>$<%= totalMensualidades %></b></p>
+            <% } %>
+
+            <hr>
+            <p class="total">Enganche: $<%= Enganche %></p>
+            <p class="total">Apartado: $<%= apartado %></p>
+            <p class="total">Total de pagos: <b>$<%= totalPagos %></b></p>
+
+            <br>
+            <br>
+
+            <p class="total">Precio Lista: $<%= PrecioLista %></p>
             <p class="total">Descuento: $<%= descuento %></p>
-            <h2>Total: $<%= total %></h2>
-            <h2>Plazo de Entrega</h2>
-            <p><%= tiempoEntrega %></p>
-            <h2>Condiciones de Pago</h2>
-            <p><%= condicionesPago %></p>
+            <h2>Total: $<%= PrecioTotal %></h2>
+           
+            <h2>Pago al escriturar $<%= escritura %></h2>
+            <br>
             <p>Si tiene alguna pregunta o necesita más información, no dude en ponerse en contacto con nosotros. Agradecemos su preferencia y estamos a su disposición para cualquier consulta.</p>
         </div>
         <br>
